@@ -33,3 +33,10 @@ As it stands, the header renders itself on every keystroke to the search input. 
 ### The Solution
 
 Once you've arrived at a solution, please add a paragraph to this README, describing the nature of the problem you fixed (why did the app render on every keystroke?), the solution you provided, and an explanation as to why your solution corrects the problem. When you're ready, please share your repository with the ChartHop team. Specific sharing accounts will be provided via email.
+
+### Explanation
+The `Header` component was re-rendering on every keystroke, because the `fetchFlavors` function was being recreated on every render of the `App` component. To the `Header` component, this is a props change, which triggered the re-render.
+
+I used the `useCallback` hook to memoize the `fetchFlavors` function, which just means that the function reference is going to stay the same across renders unless the `iceCreamShop` state changes.
+
+The result of this change is that the header is only re-rendering when necessary (i.e. when referencing a different IceCreamShop).
