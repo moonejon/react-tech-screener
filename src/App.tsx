@@ -7,7 +7,7 @@ import {
   RadioGroup,
   Stack,
 } from "@mui/material";
-import { createContext, useContext, useEffect, useState, memo, useCallback } from "react";
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 enum IceCreamShop {
   WHATS_THE_SCOOP = "What's the Scoop",
@@ -48,7 +48,7 @@ const VisibleFlavors = ({ fetchFlavors }: { fetchFlavors: () => string[] }) => {
   );
 };
 
-const Header = memo(({ fetchFlavors }: { fetchFlavors: () => string[] }) => {
+const Header = ({ fetchFlavors }: { fetchFlavors: () => string[] }) => {
   const [renderCount, setRenderCount] = useState(0);
   const flavors = fetchFlavors();
   useEffect(
@@ -62,7 +62,7 @@ const Header = memo(({ fetchFlavors }: { fetchFlavors: () => string[] }) => {
       <p>Header rendered {renderCount} times</p>
     </div>
   );
-});
+};
 
 export const App = () => {
   const [iceCreamShop, setIceCreamShop] = useState(
